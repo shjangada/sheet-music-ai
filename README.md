@@ -68,16 +68,9 @@ Copy
 
 ## Future Development
 
-We are currently working on implementing AI-powered fingering suggestions. This feature will:
+I am currently working on implementing AI-powered fingering suggestions. This feature will:
 
 - Generate optimal finger placements for the sheet music
 - Annotate the original sheet music with finger numbers
 - Provide both image and PDF outputs of the annotated sheet music
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
