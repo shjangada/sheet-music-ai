@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Playback</title>
+    <script src="https://cdn.jsdelivr.net/npm/tone@latest/build/Tone.js"></script>
+</head>
+<body>
+    <script>
+        async function playMidi(midiUrl) {
+            const response = await fetch(midiUrl);
+            const arrayBuffer = await response.arrayBuffer();
+            const midi = await Tone.Midi.fromArrayBuffer(arrayBuffer);
+
+            const synth = new Tone.Synth().toDestination();
+            midi.tracks.forEach(track => {
+                track.notes.forEach(note => {
+                    synth.triggerAttackRelease(note.name, note.duration, note.time);
+                });
+            });
+
+            await Tone.start();
+            Tone.Transport.start();
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const midiUrl = params.get('midiUrl');
+
+        if (midiUrl) {
+            playMidi(midiUrl);
+        }
+    </script>
+</body>
+</html>
